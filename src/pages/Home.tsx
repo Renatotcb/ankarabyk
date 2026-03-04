@@ -73,7 +73,7 @@ export const Home = () => {
                 <div className="absolute inset-0 rounded-full border-2 border-dashed border-ankara-gold opacity-50 group-hover:rotate-180 transition-transform duration-1000"></div>
                 <div className="absolute inset-4 rounded-full overflow-hidden border-8 border-white shadow-2xl transition-all duration-500 group-hover:scale-105">
                   <img
-                    src="https://i.ibb.co/BHc0jwnB/Whats-App-Image-2026-03-03-at-03-47-22.jpg"
+                    src="https://i.ibb.co/cSPLdbd2/image.png"
                     alt="Hero"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
