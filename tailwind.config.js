@@ -13,7 +13,7 @@ export default {
         // Couleurs inspirées des tissus Batik et Wax de tes photos
         'ankara-gold': '#D4AF37',   // Rappelle le jaune de l'ensemble
         'ankara-pink': '#E11D48',   // Rappelle le rose de l'ensemble culotte
-        'ankara-green': '#166534',  // Rappelle le vert profond du tissu Adirè
+        'ankara-brown': '#603A30',  // Ta nouvelle couleur terreuse/chocolatée
         'ankara-dark': '#1A1A1A',   // Pour un texte bien contrasté
         'ankara-bg': '#FAFAF9',     // Fond blanc cassé/crème pour faire ressortir les couleurs
       },
