@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#FFF8F0] font-roboto;
+  }
+
+  h1, h2, h3 {
+    @apply font-allura;
+  }
+}
+
+@layer utilities {
+  .font-allura {
+    font-family: 'Allura', cursive;
+  }
+
+  .font-roboto {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .bg-terracotta {
+    background-color: #CE6A4C;
+  }
+
+  .bg-mustard {
+    background-color: #D4A017;
+  }
+
+  .bg-deep-green {
+    background-color: #2C5530;
+  }
+
+  .text-terracotta {
+    color: #CE6A4C;
+  }
+
+  .text-mustard {
+    color: #D4A017;
+  }
+
+  .text-deep-green {
+    color: #2C5530;
+  }
+
+  .border-terracotta {
+    border-color: #CE6A4C;
+  }
+
+  .border-mustard {
+    border-color: #D4A017;
+  }
+
+  .border-deep-green {
+    border-color: #2C5530;
+  }
+}
+
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
