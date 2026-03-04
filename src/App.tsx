@@ -18,21 +18,29 @@ function App() {
 
   useEffect(() => {
     const handleNavigation = () => {
+      // On récupère ce qui est après le # (ex: #/shop -> /shop)
       let path = window.location.hash.slice(1) || '/';
       
+      // Normalisation du chemin pour éviter les erreurs de switch
       if (path !== '/' && !path.startsWith('/')) {
         path = '/' + path;
       }
       
       setCurrentPage(path);
+      
+      // On remonte en haut de page à chaque changement de vue
       window.scrollTo(0, 0);
       
+      // Vérification spécifique pour l'accès admin
       if (path === '/admin-ankara-by-k' && !isAdminAuthenticated) {
         checkAdminAccess();
       }
     };
 
+    // Écouteur pour les changements d'URL (clics sur les liens #/...)
     window.addEventListener('hashchange', handleNavigation);
+    
+    // Appel initial au chargement
     handleNavigation();
 
     return () => window.removeEventListener('hashchange', handleNavigation);
@@ -44,10 +52,11 @@ function App() {
       setIsAdminAuthenticated(true);
     } else {
       alert("Code incorrect. Accès refusé.");
-      window.location.hash = '/'; 
+      window.location.hash = '/'; // Redirection vers l'accueil
     }
   };
 
+  // Système de routage manuel
   const renderPage = () => {
     switch (currentPage) {
       case '/':
@@ -65,15 +74,17 @@ function App() {
     }
   };
 
+  // Déterminer si on est sur la page admin pour masquer Header/Footer
   const isAdminPage = currentPage === '/admin-ankara-by-k';
 
   return (
     <CartProvider>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col font-roboto bg-white text-ankara-dark">
+        {/* On n'affiche le Header que si on n'est pas sur l'admin */}
         {!isAdminPage && (
           <Header
             onCartClick={() => setIsCartOpen(true)}
-            onSearchClick={() => {}}
+            onSearchClick={() => {}} // Optionnel : à implémenter si besoin
           />
         )}
 
@@ -81,15 +92,20 @@ function App() {
           {renderPage()}
         </main>
 
+        {/* On n'affiche le Footer que si on n'est pas sur l'admin */}
         {!isAdminPage && <Footer />}
 
-        {/* --- CORRECTION ICI : Ajout de onCheckout --- */}
+        {/* Composant Panier Latéral */}
         <CartDrawer
           isOpen={isCartOpen}
           onClose={() => setIsCartOpen(false)}
-          onCheckout={() => setIsPaymentOpen(true)} 
+          onCheckout={() => {
+            setIsCartOpen(false); // Ferme le panier
+            setIsPaymentOpen(true); // Ouvre le formulaire de paiement
+          }} 
         />
 
+        {/* Modal de Paiement / Checkout */}
         <PaymentModal
           isOpen={isPaymentOpen}
           onClose={() => setIsPaymentOpen(false)}
