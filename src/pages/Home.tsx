@@ -6,7 +6,6 @@ import { ProductModal } from '../components/ProductModal';
 import { ALL_PRODUCTS } from '../data/products';
 
 export const Home = () => {
-  // On filtre pour n'afficher que les 5 produits marqués "featured"
   const [featuredProducts] = useState<Product[]>(
     ALL_PRODUCTS.filter(p => p.featured).slice(0, 5)
   );
@@ -50,7 +49,8 @@ export const Home = () => {
               
               <h1 className="text-5xl md:text-8xl font-allura text-ankara-dark mb-6 leading-[1.1]">
                 Bienvenue chez <br />
-                <span className="text-ankara-green">Ankara by K</span>
+                {/* Couleur modifiée ici en style inline pour assurer le rendu #603A30 */}
+                <span style={{ color: '#603A30' }}>Ankara by K</span>
               </h1>
               
               <p className="text-lg md:text-xl text-stone-600 mb-10 font-roboto font-light leading-relaxed max-w-xl mx-auto lg:mx-0">
@@ -58,11 +58,11 @@ export const Home = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
-                <a href="/shop" className="group bg-ankara-dark text-white px-10 py-4 rounded-full font-bold hover:bg-ankara-green transition-all duration-300 shadow-xl flex items-center justify-center gap-3">
+                <a href="/shop" style={{ backgroundColor: '#603A30' }} className="group text-white px-10 py-4 rounded-full font-bold hover:opacity-90 transition-all duration-300 shadow-xl flex items-center justify-center gap-3">
                   Découvrir la boutique
                   <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
                 </a>
-                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="group border-2 border-ankara-green text-ankara-green px-10 py-4 rounded-full font-bold hover:bg-ankara-green hover:text-white transition-all duration-300 flex items-center justify-center gap-3">
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" style={{ borderColor: '#603A30', color: '#603A30' }} className="group border-2 px-10 py-4 rounded-full font-bold hover:bg-[#603A30] hover:text-white transition-all duration-300 flex items-center justify-center gap-3">
                   <MessageCircle size={22} className="group-hover:scale-110 transition-transform" />
                   WhatsApp
                 </a>
@@ -89,7 +89,7 @@ export const Home = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-2 md:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-4xl md:text-6xl font-allura text-ankara-green">Nos Incontournables</h2>
+            <h2 className="text-4xl md:text-6xl font-allura" style={{ color: '#603A30' }}>Nos Incontournables</h2>
             <div className="h-1 w-16 bg-ankara-gold mx-auto mt-2"></div>
             <p className="mt-4 text-gray-500 font-light">Une sélection exclusive de nos meilleures créations</p>
           </div>
@@ -107,52 +107,28 @@ export const Home = () => {
           </div>
 
           <div className="text-center mt-12">
-            <a href="/shop" className="inline-flex items-center gap-2 bg-ankara-dark text-white px-8 py-3 rounded-full hover:bg-ankara-green transition-colors font-bold shadow-lg">
+            <a href="/shop" style={{ backgroundColor: '#603A30' }} className="inline-flex items-center gap-2 text-white px-8 py-3 rounded-full hover:opacity-90 transition-colors font-bold shadow-lg">
               Voir toute la collection <ArrowRight size={18} />
             </a>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3: LOOKBOOK */}
-<section className="py-20 bg-stone-50">
-  <div className="container mx-auto px-4">
-    <h2 className="text-5xl font-allura text-center mb-16 text-ankara-dark">Lookbook</h2>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {[
-        { name: 'Batik', url: 'https://i.ibb.co/d05zM9t1/Whats-App-Image-2026-03-03-at-09-35-37-1.jpg' },
-        { name: 'Wax', url: 'https://i.ibb.co/DPchk6j5/Whats-App-Image-2026-03-03-at-09-35-37.jpg' },
-        { name: 'Adiré', url: 'https://i.ibb.co/wNbLL9j3/Whats-App-Image-2026-03-03-at-09-35-36.jpg' }
-      ].map((cat, i) => (
-        <div key={i} className="group relative h-[450px] overflow-hidden rounded-2xl shadow-xl">
-          <img 
-            src={cat.url} 
-            alt={cat.name} 
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ankara-dark/90 via-transparent flex flex-col justify-end p-8 text-white">
-            <h3 className="text-4xl font-allura">{cat.name} Style</h3>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
       {/* SECTION 4: TÉMOIGNAGES */}
-      <section className="py-24 bg-ankara-green text-white">
+      <section className="py-24 text-white" style={{ backgroundColor: '#603A30' }}>
         <div className="container mx-auto px-4">
           <h2 className="text-5xl font-allura text-center mb-16">Témoignages</h2>
           <div className="max-w-3xl mx-auto bg-white rounded-3xl p-10 shadow-2xl text-ankara-dark text-center">
             <Quote className="text-ankara-gold mx-auto mb-4" size={40} />
             <p className="text-xl italic mb-6">"{testimonials[currentTestimonial]?.message}"</p>
-            <p className="text-ankara-green font-bold text-2xl">{testimonials[currentTestimonial]?.name}</p>
+            <p className="font-bold text-2xl" style={{ color: '#603A30' }}>{testimonials[currentTestimonial]?.name}</p>
             <div className="flex justify-center gap-2 mt-8">
               {testimonials.map((_, i) => (
                 <button 
                   key={i} 
                   onClick={() => setCurrentTestimonial(i)} 
-                  className={`h-2 rounded-full transition-all ${i === currentTestimonial ? 'w-8 bg-ankara-green' : 'w-2 bg-stone-300'}`} 
+                  className={`h-2 rounded-full transition-all ${i === currentTestimonial ? 'w-8' : 'w-2 bg-stone-300'}`}
+                  style={{ backgroundColor: i === currentTestimonial ? '#603A30' : undefined }}
                 />
               ))}
             </div>
@@ -161,13 +137,13 @@ export const Home = () => {
       </section>
 
       {/* SECTION 5: CTA FINAL */}
-      <section className="py-20 bg-ankara-green text-white text-center relative overflow-hidden border-t border-white/10">
+      <section className="py-20 text-white text-center relative overflow-hidden border-t border-white/10" style={{ backgroundColor: '#603A30' }}>
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-5xl md:text-7xl font-allura text-ankara-gold mb-6">Prêt à rayonner ?</h2>
           <p className="text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light opacity-90">
             Portez l'héritage, affirmez votre style. Nos pièces uniques n'attendent que vous.
           </p>
-          <a href="/shop" className="inline-block bg-ankara-gold text-ankara-dark px-12 py-5 rounded-full font-bold hover:bg-white hover:scale-105 transition-all shadow-2xl">
+          <a href="/shop" className="inline-block bg-ankara-gold text-white px-12 py-5 rounded-full font-bold hover:bg-white hover:text-[#603A30] hover:scale-105 transition-all shadow-2xl">
             VOIR LA BOUTIQUE
           </a>
         </div>
