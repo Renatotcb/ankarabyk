@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Importation indispensable pour la navigation React
 import { MessageCircle, ArrowRight, Quote } from 'lucide-react';
 import { Product, Testimonial } from '../types';
 import { ProductCard } from '../components/ProductCard';
@@ -58,12 +57,10 @@ export const Home = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
-                {/* CHANGEMENT ICI : Utilisation de Link au lieu de <a> */}
-                <Link to="/shop" className="group bg-ankara-brown text-white px-10 py-4 rounded-full font-bold hover:opacity-90 transition-all duration-300 shadow-xl flex items-center justify-center gap-3">
+                <a href="/shop" className="group bg-ankara-brown text-white px-10 py-4 rounded-full font-bold hover:opacity-90 transition-all duration-300 shadow-xl flex items-center justify-center gap-3">
                   Découvrir la boutique
                   <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
-                </Link>
-                
+                </a>
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="group border-2 border-ankara-brown text-ankara-brown px-10 py-4 rounded-full font-bold hover:bg-ankara-brown hover:text-white transition-all duration-300 flex items-center justify-center gap-3">
                   <MessageCircle size={22} className="group-hover:scale-110 transition-transform" />
                   WhatsApp
@@ -109,25 +106,44 @@ export const Home = () => {
           </div>
 
           <div className="text-center mt-12">
-            {/* CHANGEMENT ICI : Utilisation de Link */}
-            <Link to="/shop" className="inline-flex items-center gap-2 bg-ankara-brown text-white px-8 py-3 rounded-full hover:opacity-90 transition-colors font-bold shadow-lg">
+            <a href="/shop" className="inline-flex items-center gap-2 bg-ankara-brown text-white px-8 py-3 rounded-full hover:opacity-90 transition-colors font-bold shadow-lg">
               Voir toute la collection <ArrowRight size={18} />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* SECTION 5: CTA FINAL */}
+      {/* SECTION 4: TÉMOIGNAGES (C'est ici que la bande redevient colorée) */}
+      <section className="py-24 bg-ankara-brown text-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-5xl font-allura text-center mb-16">Témoignages</h2>
+          <div className="max-w-3xl mx-auto bg-white rounded-3xl p-10 shadow-2xl text-ankara-dark text-center">
+            <Quote className="text-ankara-gold mx-auto mb-4" size={40} />
+            <p className="text-xl italic mb-6">"{testimonials[currentTestimonial]?.message}"</p>
+            <p className="text-ankara-brown font-bold text-2xl">{testimonials[currentTestimonial]?.name}</p>
+            <div className="flex justify-center gap-2 mt-8">
+              {testimonials.map((_, i) => (
+                <button 
+                  key={i} 
+                  onClick={() => setCurrentTestimonial(i)} 
+                  className={`h-2 rounded-full transition-all ${i === currentTestimonial ? 'w-8 bg-ankara-brown' : 'w-2 bg-stone-300'}`} 
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: CTA FINAL (Bande colorée du bas) */}
       <section className="py-20 bg-ankara-brown text-white text-center relative overflow-hidden border-t border-white/10">
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-5xl md:text-7xl font-allura text-ankara-gold mb-6">Prêt à rayonner ?</h2>
           <p className="text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light opacity-90">
             Portez l'héritage, affirmez votre style. Nos pièces uniques n'attendent que vous.
           </p>
-          {/* CHANGEMENT ICI : Utilisation de Link */}
-          <Link to="/shop" className="inline-block bg-ankara-gold text-white px-12 py-5 rounded-full font-bold hover:bg-white hover:text-ankara-brown hover:scale-105 transition-all shadow-2xl">
+          <a href="/shop" className="inline-block bg-ankara-gold text-white px-12 py-5 rounded-full font-bold hover:bg-white hover:text-ankara-brown hover:scale-105 transition-all shadow-2xl">
             VOIR LA BOUTIQUE
-          </Link>
+          </a>
         </div>
       </section>
 
