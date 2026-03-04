@@ -12,8 +12,8 @@ export const Home = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
-  // Correction des liens pour correspondre à ton URL (#/shop)
   const shopUrl = "#/shop";
+  const whatsappUrl = 'https://wa.me/22964830195?text=Bonjour Ankara By K, je souhaite commander.';
 
   const testimonials: Testimonial[] = [
     { id: '1', name: 'Rénato TCHOBO', message: "La qualité des tissus Batik est exceptionnelle. Une finition parfaite !", rating: 5 },
@@ -31,31 +31,31 @@ export const Home = () => {
     return () => clearInterval(interval);
   }, [testimonials.length]);
 
-  const whatsappUrl = 'https://wa.me/22964830195?text=Bonjour Ankara By K, je souhaite commander.';
-
   return (
     <div className="overflow-x-hidden">
       {/* SECTION 1: HERO */}
-      <section className="relative min-h-[90vh] lg:min-h-[85vh] flex items-center bg-white overflow-hidden pt-12 lg:pt-0">
+      <section className="relative min-h-screen lg:min-h-[85vh] flex items-center bg-white overflow-hidden">
         
-        {/* IMAGE EN ARRIÈRE-PLAN SUR MOBILE - CACHÉE SUR DESKTOP */}
+        {/* IMAGE DE FOND MOBILE AVEC OPACITÉ NOIRE */}
         <div className="absolute inset-0 z-0 lg:hidden">
-            <img 
-                src="https://i.ibb.co/cSPLdbd2/image.png" 
-                className="w-full h-full object-cover" 
-                alt="Background" 
-            />
-            {/* Overlay pour la lisibilité du texte sur mobile */}
-            <div className="absolute inset-0 bg-white/70 backdrop-blur-[2px]"></div>
+          <img 
+            src="https://i.ibb.co/cSPLdbd2/image.png" 
+            className="w-full h-full object-cover object-top" 
+            alt="Ankara Background" 
+          />
+          {/* LE VOILE NOIR LÉGER (Overlay) */}
+          <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
+        {/* BACKGROUND DESKTOP */}
         <div className="absolute top-0 right-0 w-1/4 h-full bg-ankara-bg -z-10 hidden lg:block"></div>
         
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
+            {/* TEXTE HERO */}
             <div className="text-center lg:text-left order-2 lg:order-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ankara-gold/20 text-ankara-gold font-bold text-xs mb-6 uppercase tracking-widest border border-ankara-gold/30">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ankara-gold/20 text-ankara-gold font-bold text-xs mb-6 uppercase tracking-widest border border-ankara-gold/30 backdrop-blur-sm">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-ankara-gold opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-ankara-gold"></span>
@@ -63,29 +63,29 @@ export const Home = () => {
                 Prêt-à-porter de luxe
               </div>
               
-              <h1 className="text-5xl md:text-8xl font-allura text-ankara-dark mb-6 leading-[1.1]">
+              {/* TITRE PASSÉ EN BLANC SUR MOBILE POUR LA LISIBILITÉ */}
+              <h1 className="text-5xl md:text-8xl font-allura text-white lg:text-ankara-dark mb-6 leading-[1.1]">
                 Bienvenue chez <br />
-                <span className="text-ankara-brown">Ankara by K</span>
+                <span className="text-ankara-gold lg:text-ankara-brown">Ankara by K</span>
               </h1>
               
-              <p className="text-lg md:text-xl text-stone-800 lg:text-stone-600 mb-10 font-roboto font-medium lg:font-light leading-relaxed max-w-xl mx-auto lg:mx-0">
+              <p className="text-lg md:text-xl text-white/90 lg:text-stone-600 mb-10 font-roboto font-light leading-relaxed max-w-xl mx-auto lg:mx-0">
                 L'élégance africaine réinventée. Découvrez nos collections uniques en Batik, Wax et Adiré.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
-                {/* BOUTON CORRIGÉ */}
-                <a href={shopUrl} className="group bg-ankara-brown text-white px-10 py-4 rounded-full font-bold hover:opacity-90 transition-all duration-300 shadow-xl flex items-center justify-center gap-3">
+                <a href={shopUrl} className="group bg-ankara-gold lg:bg-ankara-brown text-white px-10 py-4 rounded-full font-bold hover:opacity-90 transition-all duration-300 shadow-xl flex items-center justify-center gap-3">
                   Découvrir la boutique
                   <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
                 </a>
-                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="group border-2 border-ankara-brown text-ankara-brown px-10 py-4 rounded-full font-bold hover:bg-ankara-brown hover:text-white transition-all duration-300 flex items-center justify-center gap-3 bg-white/50 backdrop-blur-sm lg:bg-transparent">
-                  <MessageCircle size={22} className="group-hover:scale-110 transition-transform" />
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="group border-2 border-white lg:border-ankara-brown text-white lg:text-ankara-brown px-10 py-4 rounded-full font-bold hover:bg-white hover:text-ankara-dark lg:hover:bg-ankara-brown lg:hover:text-white transition-all duration-300 flex items-center justify-center gap-3">
+                  <MessageCircle size={22} />
                   WhatsApp
                 </a>
               </div>
             </div>
 
-            {/* IMAGE CACHÉE SUR MOBILE CAR PASSÉE EN BG */}
+            {/* IMAGE DESKTOP (CACHÉE SUR MOBILE) */}
             <div className="hidden lg:flex order-1 lg:order-2 justify-center lg:justify-end">
               <div className="relative group w-72 h-72 md:w-[450px] md:h-[450px]">
                 <div className="absolute inset-0 rounded-full border-2 border-dashed border-ankara-gold opacity-50 group-hover:rotate-180 transition-transform duration-1000"></div>
@@ -124,7 +124,6 @@ export const Home = () => {
           </div>
 
           <div className="text-center mt-12">
-            {/* BOUTON TOUTE LA COLLECTION CORRIGÉ */}
             <a href={shopUrl} className="inline-flex items-center gap-2 bg-ankara-brown text-white px-8 py-3 rounded-full hover:opacity-90 transition-colors font-bold shadow-lg">
               Voir toute la collection <ArrowRight size={18} />
             </a>
@@ -132,9 +131,8 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* ... (Reste des sections inchangé) ... */}
+      {/* SECTION 4: TÉMOIGNAGES */}
       <section className="py-24 bg-ankara-brown text-white">
-        {/* Code des témoignages... */}
         <div className="container mx-auto px-4">
           <h2 className="text-5xl font-allura text-center mb-16">Témoignages</h2>
           <div className="max-w-3xl mx-auto bg-white rounded-3xl p-10 shadow-2xl text-ankara-dark text-center">
@@ -154,13 +152,13 @@ export const Home = () => {
         </div>
       </section>
 
+      {/* SECTION 5: CTA FINAL */}
       <section className="py-20 bg-ankara-brown text-white text-center relative overflow-hidden border-t border-white/10">
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-5xl md:text-7xl font-allura text-ankara-gold mb-6">Prêt à rayonner ?</h2>
           <p className="text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light opacity-90">
             Portez l'héritage, affirmez votre style. Nos pièces uniques n'attendent que vous.
           </p>
-          {/* BOUTON FINAL CORRIGÉ */}
           <a href={shopUrl} className="inline-block bg-ankara-gold text-white px-12 py-5 rounded-full font-bold hover:bg-white hover:text-ankara-brown hover:scale-105 transition-all shadow-2xl">
             VOIR LA BOUTIQUE
           </a>
