@@ -18,7 +18,6 @@ export const Header = ({ onCartClick, onSearchClick }: HeaderProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // CORRECTION : Ajout du # devant les liens pour le HashRouter
   const navLinks = [
     { name: 'Accueil', href: '#/' },
     { name: 'Boutique', href: '#/shop' },
@@ -38,7 +37,7 @@ export const Header = ({ onCartClick, onSearchClick }: HeaderProps) => {
             
             {/* Menu Mobile Button */}
             <button
-              className="md:hidden p-2 hover:bg-stone-100 rounded-full transition-colors text-ankara-green"
+              className="md:hidden p-2 hover:bg-stone-100 rounded-full transition-colors text-ankara-brown"
               onClick={() => setIsMenuOpen(true)}
               aria-label="Ouvrir le menu"
             >
@@ -48,7 +47,8 @@ export const Header = ({ onCartClick, onSearchClick }: HeaderProps) => {
             {/* Logo */}
             <div className="flex-1 md:flex-none text-center md:text-left">
               <a href="#/" className="inline-block group">
-                <h1 className="text-3xl md:text-5xl font-allura bg-gradient-to-r from-ankara-green to-ankara-gold bg-clip-text text-transparent transition-transform duration-300 group-hover:scale-105">
+                {/* Dégradé mis à jour : du Brun vers le Doré */}
+                <h1 className="text-3xl md:text-5xl font-allura bg-gradient-to-r from-ankara-brown to-ankara-gold bg-clip-text text-transparent transition-transform duration-300 group-hover:scale-105">
                   Ankara by K
                 </h1>
               </a>
@@ -60,10 +60,10 @@ export const Header = ({ onCartClick, onSearchClick }: HeaderProps) => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="relative text-stone-700 font-medium tracking-wide hover:text-ankara-pink transition-colors duration-300 group"
+                  className="relative text-stone-700 font-medium tracking-wide hover:text-ankara-brown transition-colors duration-300 group"
                 >
                   {link.name}
-                  <span className="absolute inset-x-0 bottom-[-4px] h-0.5 bg-ankara-pink transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+                  <span className="absolute inset-x-0 bottom-[-4px] h-0.5 bg-ankara-brown transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
                 </a>
               ))}
             </nav>
@@ -80,19 +80,19 @@ export const Header = ({ onCartClick, onSearchClick }: HeaderProps) => {
 
               <button
                 onClick={onCartClick}
-                className="group relative p-2 text-stone-700 hover:text-ankara-pink transition-all"
+                className="group relative p-2 text-stone-700 hover:text-ankara-brown transition-all"
                 aria-label="Panier"
               >
                 <ShoppingCart size={22} />
                 {cartCount > 0 && (
-                  <span className="absolute top-0 right-0 bg-ankara-pink text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center animate-bounce">
+                  <span className="absolute top-0 right-0 bg-ankara-brown text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center animate-bounce">
                     {cartCount}
                   </span>
                 )}
               </button>
 
               <button
-                className="hidden sm:block p-2 text-stone-700 hover:text-ankara-green transition-all"
+                className="hidden sm:block p-2 text-stone-700 hover:text-ankara-brown transition-all"
                 aria-label="Mon compte"
               >
                 <User size={22} />
@@ -101,8 +101,8 @@ export const Header = ({ onCartClick, onSearchClick }: HeaderProps) => {
           </div>
         </div>
 
-        {/* Marquee */}
-        <div className="bg-ankara-green text-white overflow-hidden py-1.5 border-t border-white/10">
+        {/* Marquee (La bande qui était redevenue blanche) */}
+        <div className="bg-ankara-brown text-white overflow-hidden py-1.5 border-t border-white/10">
           <div className="flex whitespace-nowrap animate-marquee font-roboto text-xs uppercase tracking-[0.2em]">
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className="flex items-center">
@@ -134,7 +134,7 @@ export const Header = ({ onCartClick, onSearchClick }: HeaderProps) => {
           }`}
         >
           <div className="p-6 border-b border-stone-100 flex items-center justify-between">
-            <h2 className="text-3xl font-allura text-ankara-green">Menu</h2>
+            <h2 className="text-3xl font-allura text-ankara-brown">Menu</h2>
             <button 
               onClick={() => setIsMenuOpen(false)}
               className="p-2 hover:bg-stone-50 rounded-full"
@@ -148,7 +148,7 @@ export const Header = ({ onCartClick, onSearchClick }: HeaderProps) => {
               <a
                 key={link.name}
                 href={link.href}
-                className="py-4 text-xl font-roboto text-stone-800 border-b border-stone-50 hover:pl-2 hover:text-ankara-pink transition-all"
+                className="py-4 text-xl font-roboto text-stone-800 border-b border-stone-50 hover:pl-2 hover:text-ankara-brown transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.name}
